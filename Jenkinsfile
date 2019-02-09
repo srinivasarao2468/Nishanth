@@ -2,7 +2,7 @@ node{
     stage('SCM Checkout'){
     checkout(scm)
     }
-    def mvnHome = tool name: 'maven-3', type: 'maven'
+    def mvnHome = tool name: 'M3', type: 'maven'
     stage('Test'){
          sh "${mvnHome}/bin/mvn test"
     }
