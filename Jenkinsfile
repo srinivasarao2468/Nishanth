@@ -10,8 +10,8 @@ node{
          sh "${mvnHome}/bin/mvn package"
     }
     stage('Build'){
-    docker build -t docker-registry .
-    docker tag docker-registry:latest 410829681883.dkr.ecr.us-west-2.amazonaws.com/docker-registry:latest
-    docker push 410829681883.dkr.ecr.us-west-2.amazonaws.com/docker-registry:latest
+    sh "docker build -t docker-registry ."
+    sh "docker tag docker-registry:latest 410829681883.dkr.ecr.us-west-2.amazonaws.com/docker-registry:latest"
+    sh "docker push 410829681883.dkr.ecr.us-west-2.amazonaws.com/docker-registry:latest"
     }
 }
