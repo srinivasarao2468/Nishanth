@@ -9,4 +9,4 @@ TASKDEFINITION_ARN=$( < REGISTERED_TASKDEF.json jq .taskDefinition.taskDefinitio
 
 # create or update service
 sed "s,@@TASKDEFINITION_ARN@@,$TASKDEFINITION_ARN," <service-$2-tomcat.json >SERVICEDEF.json
-aws ecs $2-service --cli-input-json file://SERVICEDEF.json | tee SERVICE.json
+aws ecs $2-service --region us-west-2 --cli-input-json file://SERVICEDEF.json | tee SERVICE.json
