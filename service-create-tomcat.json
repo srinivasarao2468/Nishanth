@@ -1,7 +1,7 @@
 {
     "cluster": "acc",
     "serviceName": "tomcat",
-    "taskDefinition": "@@TASKDEFINITION_ARN@@",
+    "taskDefinition": @@TASKDEFINITION_ARN@@,
     "desiredCount": 1,
     "deploymentConfiguration": {
         "maximumPercent": 100,
