@@ -4,7 +4,7 @@
 
 # register task-definition
 sed <td-tomcat.template -e "s,@VERSION@,$CONTAINER_VERSION,">TASKDEF.json
-aws ecs register-task-definition --cli-input-json file://TASKDEF.json > REGISTERED_TASKDEF.json
+aws ecs register-task-definition --region us-west-2 --cli-input-json file://TASKDEF.json > REGISTERED_TASKDEF.json
 TASKDEFINITION_ARN=$( < REGISTERED_TASKDEF.json jq .taskDefinition.taskDefinitionArn )
 
 # create or update service
