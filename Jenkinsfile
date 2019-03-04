@@ -12,8 +12,8 @@ node{
     }
     stage('Build'){
     sh "\$(aws ecr get-login --no-include-email --region us-west-2)"
-    sh "docker build -t docker-registry ."
-    sh "docker tag docker-registry:latest {repo_url}:latest"
-    sh "docker push {repo_url}:latest"
+    sh "docker build -t ecr_docker_repository ."
+    sh "docker tag ecr_docker_repository:latest ${repo_url}:latest"
+    sh "docker push ${repo_url}:latest"
     }
 }
