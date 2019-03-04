@@ -26,5 +26,6 @@ node{
     sh "chmod 700 service-create-tomcat.json"
     sh "chmod 700 deploy.sh"
     sh "./deploy.sh CONTAINER_VERSION=${repo_url}:latest create"
+    //sh "./deploy.sh CONTAINER_VERSION=${repo_url}:latest create"
     }
 }
