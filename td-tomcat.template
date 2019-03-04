@@ -1,8 +1,8 @@
 {
-  "family": "nginx",
+  "family": "tomcat",
   "containerDefinitions": [
     {
-      "name": "nginx",
+      "name": "tomcat",
       "image": @VERSION@,
       "memory": 128,
       "portMappings": [
