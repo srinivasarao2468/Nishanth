@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "tomcat",
-      "image": @VERSION@,
+      "image": "410829681883.dkr.ecr.us-west-2.amazonaws.com/ecr_docker_repository:latest",
       "memory": 128,
       "portMappings": [
         {
