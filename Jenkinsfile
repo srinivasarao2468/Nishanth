@@ -1,4 +1,5 @@
 node{
+    def repo_url = "410829681883.dkr.ecr.us-west-2.amazonaws.com/ecr_docker_repository"
     stage('SCM Checkout'){
     checkout(scm)
     }
@@ -12,7 +13,7 @@ node{
     stage('Build'){
     sh "\$(aws ecr get-login --no-include-email --region us-west-2)"
     sh "docker build -t docker-registry ."
-    sh "docker tag docker-registry:latest 410829681883.dkr.ecr.us-west-2.amazonaws.com/docker-registry:latest"
-    sh "docker push 410829681883.dkr.ecr.us-west-2.amazonaws.com/docker-registry:latest"
+    sh "docker tag docker-registry:latest {repo_url}:latest"
+    sh "docker push {repo_url}:latest"
     }
 }
