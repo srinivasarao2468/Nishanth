@@ -25,6 +25,6 @@ node{
     sh "chmod 700 service-update-tomcat.json"
     sh "chmod 700 service-create-tomcat.json"
     sh "chmod 700 deploy.sh"
-    sh "./deploy.sh ${repo_url}:latest update"
+    sh "./deploy.sh ${repo_url}:latest create"
     }
 }
