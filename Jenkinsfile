@@ -21,6 +21,7 @@ node{
     }
 
     stage('deploy'){
+    sh "chmod 700 ./deploy.sh"
     sh "./deploy.sh CONTAINER_VERSION=${repo_url}:latest create"
     }
 }
