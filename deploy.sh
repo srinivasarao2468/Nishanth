@@ -8,5 +8,5 @@ aws ecs register-task-definition --region us-west-2 --cli-input-json file://TASK
 TASKDEFINITION_ARN=$( < REGISTERED_TASKDEF.json jq .taskDefinition.taskDefinitionArn )
 
 # create or update service
-sed "s,@@TASKDEFINITION_ARN@@,$TASKDEFINITION_ARN," <service-$0-tomcat.json >SERVICEDEF.json
-aws ecs $0-service --cli-input-json file://SERVICEDEF.json | tee SERVICE.json
+sed "s,@@TASKDEFINITION_ARN@@,$TASKDEFINITION_ARN," <service-create-tomcat.json >SERVICEDEF.json
+aws ecs create-service --cli-input-json file://SERVICEDEF.json | tee SERVICE.json
