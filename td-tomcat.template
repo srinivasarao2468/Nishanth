@@ -1,0 +1,17 @@
+{
+  "family": "nginx",
+  "containerDefinitions": [
+    {
+      "name": "nginx",
+      "image": @VERSION@,
+      "memory": 128,
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 32000,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+    "cluster": "acc",
+    "serviceName": "tomcat",
+    "taskDefinition": "@@TASKDEFINITION_ARN@@",
+    "loadBalancers": [
+        {
+            "targetGroupArn": "@@TARGET_GROUP_ARN@@",
+            "containerName": "tomcat",
+            "containerPort": 8080
+        }
+    ],
+    "desiredCount": 1,
+    "role": "/ecs/test_ecs_lb_role",
+    "deploymentConfiguration": {
+        "maximumPercent": 100,
+        "minimumHealthyPercent": 0
+    }
+}

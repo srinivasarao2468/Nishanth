@@ -3,17 +3,24 @@ node{
     stage('SCM Checkout'){
     checkout(scm)
     }
+
     def mvnHome = tool name: 'M3', type: 'maven'
     stage('Test'){
          sh "${mvnHome}/bin/mvn test"
     }
+
     stage('Package'){
          sh "${mvnHome}/bin/mvn package"
     }
+
     stage('Build'){
     sh "\$(aws ecr get-login --no-include-email --region us-west-2)"
     sh "docker build -t ecr_docker_repository ."
     sh "docker tag ecr_docker_repository:latest ${repo_url}:latest"
     sh "docker push ${repo_url}:latest"
+    }
+
+    stage('deploy'){
+    sh "./deploy.sh CONTAINER_VERSION=${repo_url}:latest create"
     }
 }
