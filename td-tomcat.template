@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "tomcat",
-      "image": @VERSION@,
+      "image": "@VERSION@",
       "memory": 128,
       "portMappings": [
         {
