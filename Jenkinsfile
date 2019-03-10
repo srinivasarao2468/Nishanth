@@ -1,5 +1,10 @@
 node{
     def repo_url = "410829681883.dkr.ecr.us-west-2.amazonaws.com/ecr_docker_repository"
+    def version = "latest"
+
+    //operation = [create| update]
+    def operation = "create"
+
     stage('SCM Checkout'){
     checkout(scm)
     }
@@ -16,8 +21,8 @@ node{
     stage('Build'){
     sh "\$(aws ecr get-login --no-include-email --region us-west-2)"
     sh "docker build -t ecr_docker_repository ."
-    sh "docker tag ecr_docker_repository:latest ${repo_url}:latest"
-    sh "docker push ${repo_url}:latest"
+    sh "docker tag ecr_docker_repository:latest ${repo_url}:${version}"
+    sh "docker push ${repo_url}:${version}"
     }
 
     stage('deploy'){
@@ -25,6 +30,6 @@ node{
     sh "chmod 700 service-update-tomcat.json"
     sh "chmod 700 service-create-tomcat.json"
     sh "chmod 700 deploy.sh"
-    sh "./deploy.sh ${repo_url}:latest create"
+    sh "./deploy.sh ${repo_url}:${version} ${operation}"
     }
 }
